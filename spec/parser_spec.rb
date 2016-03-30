@@ -12,13 +12,13 @@ RSpec.describe StringParser do
     end
 
     it 'returns a hash with parsed values' do
-      expected_results  = { last: 'Ortiz', first: 'Juan', gender: 'Male', color: 'Blue', dob: '07-26-1976'}
+      expected_results  = 'Ortiz, Juan, Male, Blue, 07-26-1976'
       expect(@parser.parse).to eq expected_results 
     end
 
     it 'accepts more than one format' do
       parser = StringParser.new('Ortiz, Juan, Male, Blue, 07-26-1976')
-      expected_results  = { last: 'Ortiz', first: 'Juan', gender: 'Male', color: 'Blue', dob: '07-26-1976'}
+      expected_results  = 'Ortiz, Juan, Male, Blue, 07-26-1976'
       expect(@parser.parse).to eq expected_results 
     end
   end
