@@ -1,0 +1,4 @@
+corey, juan, male, red, 07-26-1976
+abbott, glenn, male, blue, 06-22-1999
+murphy, janet, female, green, 03-13-1999
+ortiz, eve, female, red, 05-07-1969
