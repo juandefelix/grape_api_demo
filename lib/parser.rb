@@ -11,6 +11,6 @@ class StringParser
   end
 
   def parse
-    { last: $1, first: $2, gender: $3, color: $4, dob: $5 } if raw_input =~ FORMAT_REGEX
+    [$1, $2, $3, $4, $5].join(', ') if raw_input =~ FORMAT_REGEX
   end
 end
