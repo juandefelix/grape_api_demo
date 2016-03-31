@@ -1,5 +1,5 @@
 class List
-  DEFAULT_FILE_LOCATION = 'records.txt'
+  DEFAULT_FILE_LOCATION = './app/records.txt'
   attr_reader :data
 
   def initialize(location = DEFAULT_FILE_LOCATION)
@@ -9,26 +9,25 @@ class List
   end
 
   def self.write(data, location = DEFAULT_FILE_LOCATION)
-    File.open(location,'a') { |f| f.puts(data) }
+    File.open(location,'a') do |f|
+      f.puts(data)
+      data
+    end
   end
 
   def order_by_last_name
-    @data.sort { |record_a, record_b | record_b[0] <=> record_a[0] }
+    @data.sort { |record_a, record_b | record_b[:last] <=> record_a[:last] }
   end
 
   def order_by_gender
-    @data.sort_by { |last, first, gender, color, dob | [gender, last] }
+    @data.sort_by { |record | [record[:gender], record[:last]] }
   end
 
   def order_by_dob
-    @data.sort_by { |last, first, gender, color, dob | Date.parse(formatted_dob(dob)) }
+    @data.sort_by { |record | Date.parse(formatted_dob(record[:birthdate])) }
   end
 
   private
-
-  def format_data(file)  
-    file.each_line { |line| @data << format_line(line) }
-  end
 
   def read_file
     File.open(@location,'r') do |file|
@@ -36,8 +35,13 @@ class List
     end
   end
 
+  def format_data(file)  
+    file.each_line { |line| @data << format_line(line) }
+  end
+
   def format_line(line)
-    line.rstrip.split(/,\s?/)
+    ary = line.rstrip.split(/,\s?/)
+    { last: ary[0], first: ary[1], gender: ary[2], color: ary[3], birthdate: ary[4] }
   end
 
   def formatted_dob(raw_dob)
