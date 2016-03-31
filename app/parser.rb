@@ -12,12 +12,8 @@ class StringParser
   end
 
   def serialize_input
-    [$1, $2, $3, $4, $5].join(',') if user_input =~ FORMAT_REGEX
-  end
-
-  private
-
-  def valid_string?
-    
+    if match_object = FORMAT_REGEX.match(user_input)
+      match_object.to_a[1..-1].compact.join(',')
+    end
   end
 end
