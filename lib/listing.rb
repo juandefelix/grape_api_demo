@@ -2,7 +2,6 @@ class Listing
   DEFAULT_FILE_LOCATION = 'records.txt'
   attr_reader :data
 
-
   def initialize(location = DEFAULT_FILE_LOCATION)
     @location = location
     @data = []

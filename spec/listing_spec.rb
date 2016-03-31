@@ -6,6 +6,11 @@ RSpec.describe Listing do
       expect(Listing).to receive(:write).with(instance_of(String))
       Listing.write('Ortiz | Díaz | Male | Blue | 07-26-1976')
     end
+
+    it 'writes to file' do
+      expect(File).to receive(:open).with('records.txt', 'a')
+      Listing.write('Ortiz | Díaz | Male | Blue | 07-26-1976')
+    end
   end
 
   describe '::new' do
