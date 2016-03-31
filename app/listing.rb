@@ -1,4 +1,4 @@
-class Listing
+class List
   DEFAULT_FILE_LOCATION = 'records.txt'
   attr_reader :data
 
