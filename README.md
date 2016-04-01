@@ -2,7 +2,7 @@
 
 ### Set Up
 Clone the repo  
-`git clone https://github.com/juandefelix/grape_api && cd grape_api`  
+`git clone https://github.com/juandefelix/grape_api_demo && cd grape_api_demo`  
 Get the neccessary gems:  
 `bundle install`  
 Start the server:  
