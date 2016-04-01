@@ -1,9 +1,10 @@
 require 'spec_helper'
 
-RSpec.describe RecordSaver do  
+RSpec.describe RecordSaver do 
   describe '#save' do
     it 'return status ok with forperly formatted string' do
-      List.stub(:write).and_return(File.new)
+      file = double()
+      allow(File).to receive(:open).with('./app/records.txt', 'a').and_return(file)
       saver = RecordSaver.new('Byrne, Joan, Female, Green, 3-12-1987')
       expect(saver.save).to eq({ status: 'ok' })
     end
