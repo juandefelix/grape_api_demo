@@ -1,20 +1,7 @@
-class MyLogger
-  def warning(message)
-    puts "this is a warning: #{message}"
-  end
-end
-
 module ListingApp
   class API < Grape::API
-    logger MyLogger.new
     version 'v1'
     format :json
-
-    helpers do
-      def logger
-        API.logger
-      end
-    end
 
     resource :records do
       desc "Return list of records ordered by gender"
