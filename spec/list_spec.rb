@@ -3,7 +3,7 @@ require 'spec_helper'
 RSpec.describe List do
   describe '::write' do
     it 'receives a string as parameter' do 
-      expect(List).to receive(:write).with(instance_of(String))
+      expect(List).to receive(:write).with(instance_of(String)).and_return('Ortiz,Díaz,Male,Blue,07-26-1976')
       List.write('Ortiz,Díaz,Male,Blue,07-26-1976')
     end
 
