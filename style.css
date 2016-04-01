@@ -1,0 +1,13 @@
+body {
+  font-family: sans-serif;
+}
+
+.center {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+}
+
+form {
+  margin: 15px;
+}
