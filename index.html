@@ -4,14 +4,15 @@
   <title>Grape API</title>
   <link rel="stylesheet" type="text/css" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src='scripts.js'></script>
 </head>
 
 <body>
-
+  <p>Display data order by:</p>
   <div class="center">
-    <a data-order='gender' href="">gender</a>
-    <a data-order='birthdate' href="">birthdate</a>
-    <a data-order='name' href="">name</a>
+    <a data-order='gender' href="">Gender</a>
+    <a data-order='birthdate' href="">Birthdate</a>
+    <a data-order='name' href="">Name</a>
   </div>
 
   <div class="center" id="results">
@@ -28,42 +29,6 @@
 </html>
 
 <script type="text/javascript">
-  var order;
-  var url = 'http://localhost:9292/v1/records/';
-
-  var displayData = function(data) {
-    $('table').remove();
-    $('#results').append('<table><tr>\
-      <th>Last Name</th>\
-      <th>First Name</th>\
-      <th>Gender</th>\
-      <th>Color</th>\
-      <th>Date of Birth</th>\
-      </tr></table>');
-
-    $.each(data, function(index, value){
-      $('table').append('<tr>\
-        <td>' + value.last + '</td>\
-        <td>' + value.first + '</td>\
-        <td>' + value.gender + '</td>\
-        <td>' + value.color + '</td>\
-        <td>' + value.birthdate + '</td></tr>');
-    })
-  };
-
-  var getRecords = function(url) {
-    $.getJSON( url, function( data ) {
-      displayData(data);
-    });
-  };
-
-  var postRecord = function(data) {
-    $.post('http://localhost:9292/v1/records', data, function() { 
-      $("input[type=text]").val("");
-    });
-    getRecords();
-  }
-
   $('a').click(function(e){
     e.preventDefault();
     order = e.target.dataset.order;
