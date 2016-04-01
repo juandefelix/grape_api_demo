@@ -4,22 +4,22 @@ module ListingApp
     format :json
 
     resource :records do
-      desc "Return list of records ordered by gender"
+      desc 'Return list of records ordered by gender'
       get :gender do
         QueryPerformer.new.order_by_gender
       end
 
-      desc "Return list of records ordered by birthday"
+      desc 'Return list of records ordered by birthday'
       get :birthdate do
         QueryPerformer.new.order_by_dob
       end
 
-      desc "Return list of records ordered by name"
+      desc 'Return list of records ordered by name'
       get :name do
         QueryPerformer.new.order_by_last_name
       end
 
-      desc 'enter a record in the list'
+      desc 'Enter a record in the list'
       post do
         RecordSaver.new(params[:input]).save
       end

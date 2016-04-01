@@ -4,14 +4,14 @@ class RecordSaver
   end
 
   def save
-    status = saved? ? 'ok' : 'failed' 
+    status = saved? ? 'ok' : 'failed'
     { status: status }
   end
 
   private
 
   def saved?
-    record && List.write(record) 
+    record && List.write(record)
   end
 
   def record

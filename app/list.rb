@@ -10,7 +10,7 @@ class List
   end
 
   def self.write(data, filename = DEFAULT_FILE_LOCATION)
-    File.open(filename,'a') do |f|
+    File.open(filename, 'a') do |f|
       f.puts(data)
       data
     end
@@ -19,7 +19,7 @@ class List
   private
 
   def read_file
-    File.open(@filename,'r') do |file|  
+    File.open(@filename, 'r') do |file|
       format_data(file)
     end
   end
