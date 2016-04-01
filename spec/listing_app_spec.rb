@@ -49,7 +49,7 @@ describe ListingApp::API do
   context 'GET /v1/records/name' do
     it 'returns an array of with the right order' do
       file = double()
-      allow(File).to receive(:open).with('./app/records.txt', 'a').and_return(file)
+      allow(File).to receive(:open).with('./spec/support/records.txt', 'a').and_return(file)
       post '/v1/records/', :input => 'Stocker | Paul | Male | brown | 09-12-1988'
       expect(last_response.status).to eq(201)
       expect(JSON.parse(last_response.body)).to eq ({ status: 'ok'}.stringify_keys)

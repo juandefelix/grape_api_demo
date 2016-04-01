@@ -8,7 +8,7 @@ RSpec.describe List do
     end
 
     it 'writes to file' do
-      expect(File).to receive(:open).with('./app/records.txt', 'a')
+      expect(File).to receive(:open).with('./spec/support/records.txt', 'a')
       List.write('Ortiz,Díaz,Male,Blue,07-26-1976')
     end
   end
