@@ -1,8 +1,7 @@
 class QueryPerformer
-  DEFAULT_FILE_LOCATION = './app/records.txt'
   attr_reader :data
 
-  def initialize(filename = DEFAULT_FILE_LOCATION)
+  def initialize(filename = nil)
     @data = List.new(filename).data
   end
 

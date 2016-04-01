@@ -1,3 +1,5 @@
+ENV['RACK_ENV'] = 'test'
+
 require 'rubygems'
 require 'simplecov'
 SimpleCov.start

@@ -2,14 +2,14 @@ class List
   DEFAULT_FILE_LOCATION = './app/records.txt'
   attr_reader :data
 
-  def initialize(location = DEFAULT_FILE_LOCATION)
-    @location = location
+  def initialize(filename)
+    @filename = filename || DEFAULT_FILE_LOCATION
     @data = []
     read_file
   end
 
-  def self.write(data, location = DEFAULT_FILE_LOCATION)
-    File.open(location,'a') do |f|
+  def self.write(data, filename = DEFAULT_FILE_LOCATION)
+    File.open(filename,'a') do |f|
       f.puts(data)
       data
     end
@@ -18,12 +18,12 @@ class List
   private
 
   def read_file
-    File.open(@location,'r') do |file|
+    File.open(@filename,'r') do |file|  
       format_data(file)
     end
   end
 
-  def format_data(file)  
+  def format_data(file)
     file.each_line { |line| @data << format_line(line) }
   end
 
