@@ -1,5 +1,6 @@
 class List
-  DEFAULT_FILE_LOCATION = './app/records.txt'
+  DEFAULT_FILE_LOCATION = ENV['RACK_ENV'] == 'development' ? './app/records.txt' : './spec/support/records.txt'
+
   attr_reader :data
 
   def initialize(filename)
