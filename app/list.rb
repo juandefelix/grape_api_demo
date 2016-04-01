@@ -19,9 +19,7 @@ class List
   private
 
   def read_file
-    File.open(@filename, 'r') do |file|
-      format_data(file)
-    end
+    File.open(@filename, 'r') { |file| format_data(file) }
   end
 
   def format_data(file)
