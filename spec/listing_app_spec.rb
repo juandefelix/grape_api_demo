@@ -32,4 +32,27 @@ describe ListingApp::API do
       expect(JSON.parse(last_response.body)).to eq sorted_data
     end
   end
+
+  context 'GET /v1/records/name' do
+    it 'returns an array of with the right order' do
+      sorted_data = [{ last: 'ortiz', first: 'eve', gender: 'female', color: 'red', birthdate: '05-07-1969' },
+                     { last: 'murphy', first: 'janet', gender: 'female', color: 'green', birthdate: '03-13-1999' },
+                     { last: 'corey', first: 'juan', gender: 'male', color: 'red', birthdate: '07-26-1976' },
+                     { last: 'abbott', first: 'glenn', gender: 'male', color: 'blue', birthdate: '06-22-1999' }]
+                     sorted_data = sorted_data.map { |hash| hash.stringify_keys }
+      get '/v1/records/name'
+      expect(last_response.status).to eq(200)
+      expect(JSON.parse(last_response.body)).to eq sorted_data
+    end
+  end
+
+  context 'GET /v1/records/name' do
+    it 'returns an array of with the right order' do
+      file = double()
+      allow(File).to receive(:open).with('./app/records.txt', 'a').and_return(file)
+      post '/v1/records/', :input => 'Stocker | Paul | Male | brown | 09-12-1988'
+      expect(last_response.status).to eq(201)
+      expect(JSON.parse(last_response.body)).to eq ({ status: 'ok'}.stringify_keys)
+    end
+  end
 end
