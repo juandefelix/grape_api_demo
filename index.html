@@ -32,7 +32,6 @@
   $('a').click(function(e){
     e.preventDefault();
     order = e.target.dataset.order;
-     + order;
     getRecords(url + order);
   });
 
@@ -40,7 +39,7 @@
     e.preventDefault();
     var data = $(e.target);
     data = data.serialize();
-     $.post('http://localhost:9292/v1/records', data, function() { 
+    $.post('http://localhost:9292/v1/records', data, function() { 
       $("input[type=text]").val("");
     });
     getRecords(url + order);
