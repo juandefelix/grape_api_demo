@@ -4,10 +4,11 @@
   <title>Grape API</title>
   <link rel="stylesheet" type="text/css" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src='scripts.js'></script>
 </head>
 
 <body>
-
+  <p>Display records ordered by:</p>
   <div class="center">
     <a data-order='gender' href="">Gender</a>
     <a data-order='birthdate' href="">Birthdate</a>
@@ -24,6 +25,25 @@
     <input type='submit'></input>
   </form>
 
-  <script src='script.js'></script>
 </body>
 </html>
+
+<script type="text/javascript">
+  $('a').click(function(e){
+    e.preventDefault();
+    order = e.target.dataset.order;
+     + order;
+    getRecords(url + order);
+  });
+
+  $('form').submit(function(e){
+    e.preventDefault();
+    var data = $(e.target);
+    data = data.serialize();
+    // postRecord(data);
+     $.post('http://localhost:9292/v1/records', data, function() { 
+      $("input[type=text]").val("");
+    });
+    getRecords(url + order);
+  })
+</script>

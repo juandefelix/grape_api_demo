@@ -1,0 +1,4 @@
+development:
+  default_file_location: ./records.txt
+test:
+  default_file_location: ./spec/support/records.txt
