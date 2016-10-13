@@ -40,7 +40,6 @@
     e.preventDefault();
     var data = $(e.target);
     data = data.serialize();
-    // postRecord(data);
      $.post('http://localhost:9292/v1/records', data, function() { 
       $("input[type=text]").val("");
     });
