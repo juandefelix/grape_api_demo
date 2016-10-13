@@ -1,4 +1,3 @@
-require 'pry-byebug'
 class StringParser
   FORMAT_REGEX = Regexp.union([/\s?(\w+)\s\|\s(\w+)\s\|\s(\w+)\s\|\s(\w+)\s\|\s([\d\/-]+)\s?/,
                                /\s?(\w+),\s?(\w+),\s?(\w+),\s?(\w+),\s?([\d\/-]+)\s?/])
